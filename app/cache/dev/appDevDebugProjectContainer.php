@@ -3058,6 +3058,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath('C:\\xampp\\htdocs\\symfony\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\TwigBundle/Resources/views', 'Twig');
         $instance->addPath('C:\\xampp\\htdocs\\symfony\\vendor\\symfony\\swiftmailer-bundle\\Symfony\\Bundle\\SwiftmailerBundle/Resources/views', 'Swiftmailer');
         $instance->addPath('C:\\xampp\\htdocs\\symfony\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views', 'Doctrine');
+        $instance->addPath('C:\\xampp\\htdocs\\symfony\\src\\Blogger\\BlogBundle/Resources/views', 'BloggerBlog');
         $instance->addPath('C:\\xampp\\htdocs\\symfony\\src\\Acme\\DemoBundle/Resources/views', 'AcmeDemo');
         $instance->addPath('C:\\xampp\\htdocs\\symfony\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views', 'WebProfiler');
         $instance->addPath('C:\\xampp\\htdocs\\symfony\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views', 'SensioDistribution');
@@ -3090,7 +3091,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getUriSignerService()
     {
-        return $this->services['uri_signer'] = new \Symfony\Component\HttpKernel\UriSigner('8d0b9246c8700cb80623b842d2b783cc5aff06ba');
+        return $this->services['uri_signer'] = new \Symfony\Component\HttpKernel\UriSigner('2862c0f19e5a5ee7f91a1a40aa02109f5');
     }
 
     /**
@@ -3561,6 +3562,7 @@ class appDevDebugProjectContainer extends Container
                 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle',
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
+                'BloggerBlogBundle' => 'Blogger\\BlogBundle\\BloggerBlogBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -3579,7 +3581,7 @@ class appDevDebugProjectContainer extends Container
             'mailer_user' => NULL,
             'mailer_password' => NULL,
             'locale' => 'en',
-            'secret' => '8d0b9246c8700cb80623b842d2b783cc5aff06ba',
+            'secret' => '2862c0f19e5a5ee7f91a1a40aa02109f5',
             'debug_toolbar' => true,
             'debug_redirects' => false,
             'use_assetic_controller' => true,
@@ -3638,7 +3640,7 @@ class appDevDebugProjectContainer extends Container
             'debug.container.dump' => 'C:/xampp/htdocs/symfony/app/cache/dev/appDevDebugProjectContainer.xml',
             'debug.controller_resolver.class' => 'Symfony\\Component\\HttpKernel\\Controller\\TraceableControllerResolver',
             'debug.debug_handlers_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\DebugHandlersListener',
-            'kernel.secret' => '8d0b9246c8700cb80623b842d2b783cc5aff06ba',
+            'kernel.secret' => '2862c0f19e5a5ee7f91a1a40aa02109f5',
             'kernel.http_method_override' => true,
             'kernel.trusted_hosts' => array(
 

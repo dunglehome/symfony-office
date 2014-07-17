@@ -16,6 +16,7 @@
       <parameter key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
+      <parameter key="BloggerBlogBundle">Blogger\BlogBundle\BloggerBlogBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -34,7 +35,7 @@
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
     <parameter key="locale">en</parameter>
-    <parameter key="secret">8d0b9246c8700cb80623b842d2b783cc5aff06ba</parameter>
+    <parameter key="secret">2862c0f19e5a5ee7f91a1a40aa02109f5</parameter>
     <parameter key="debug_toolbar">true</parameter>
     <parameter key="debug_redirects">false</parameter>
     <parameter key="use_assetic_controller">true</parameter>
@@ -93,7 +94,7 @@
     <parameter key="debug.container.dump">C:/xampp/htdocs/symfony/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="debug.controller_resolver.class">Symfony\Component\HttpKernel\Controller\TraceableControllerResolver</parameter>
     <parameter key="debug.debug_handlers_listener.class">Symfony\Component\HttpKernel\EventListener\DebugHandlersListener</parameter>
-    <parameter key="kernel.secret">8d0b9246c8700cb80623b842d2b783cc5aff06ba</parameter>
+    <parameter key="kernel.secret">2862c0f19e5a5ee7f91a1a40aa02109f5</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.trusted_proxies" type="collection"/>
@@ -662,7 +663,7 @@
       <argument>C:/xampp/htdocs/symfony/app/Resources</argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
-      <argument>8d0b9246c8700cb80623b842d2b783cc5aff06ba</argument>
+      <argument>2862c0f19e5a5ee7f91a1a40aa02109f5</argument>
     </service>
     <service id="fragment.handler" class="Symfony\Component\HttpKernel\Fragment\FragmentHandler">
       <argument type="collection"/>
@@ -2768,6 +2769,10 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\symfony\vendor\doctrine\doctrine-bundle\Doctrine\Bundle\DoctrineBundle/Resources/views</argument>
         <argument>Doctrine</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\symfony\src\Blogger\BlogBundle/Resources/views</argument>
+        <argument>BloggerBlog</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\symfony\src\Acme\DemoBundle/Resources/views</argument>
