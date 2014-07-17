@@ -135,10 +135,31 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // blogger_blog_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'blogger_blog_homepage')), array (  '_controller' => 'Blogger\\BlogBundle\\Controller\\DefaultController::indexAction',));
+        // BloggerBlogBundle_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_BloggerBlogBundle_homepage;
+            }
+
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'BloggerBlogBundle_homepage');
+            }
+
+            return array (  '_controller' => 'Blogger\\BlogBundle\\Controller\\PageController::indexAction',  '_route' => 'BloggerBlogBundle_homepage',);
         }
+        not_BloggerBlogBundle_homepage:
+
+        // BloggerBlogBundle_about
+        if ($pathinfo === '/about') {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_BloggerBlogBundle_about;
+            }
+
+            return array (  '_controller' => 'Blogger\\BlogBundle\\Controller\\PageController::aboutAction',  '_route' => 'BloggerBlogBundle_about',);
+        }
+        not_BloggerBlogBundle_about:
 
         // _welcome
         if (rtrim($pathinfo, '/') === '') {
