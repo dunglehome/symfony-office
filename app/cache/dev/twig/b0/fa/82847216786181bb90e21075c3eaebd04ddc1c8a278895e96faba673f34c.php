@@ -33,7 +33,7 @@ class __TwigTemplate_b0fa82847216786181bb90e21075c3eaebd04ddc1c8a278895e96faba67
     <title>";
         // line 6
         $this->displayBlock('title', $context, $blocks);
-        echo " - symblog</title>
+        echo " - symblog3</title>
     <!--[if lt IE 9]>
     <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>
     <![endif]-->
@@ -100,7 +100,7 @@ class __TwigTemplate_b0fa82847216786181bb90e21075c3eaebd04ddc1c8a278895e96faba67
     // line 6
     public function block_title($context, array $blocks = array())
     {
-        echo "symblog";
+        echo "symblog2";
     }
 
     // line 10
@@ -130,7 +130,10 @@ class __TwigTemplate_b0fa82847216786181bb90e21075c3eaebd04ddc1c8a278895e96faba67
         // line 26
         echo $this->env->getExtension('routing')->getPath("BloggerBlogBundle_about");
         echo "\">About</a></li>
-                        <li><a href=\"#\">Contact</a></li>
+                        <li><a href=\"";
+        // line 27
+        echo $this->env->getExtension('routing')->getPath("BloggerBlogBundle_contact");
+        echo "\">Contact</a></li>
                     </ul>
                 </nav>
             ";
@@ -187,6 +190,6 @@ class __TwigTemplate_b0fa82847216786181bb90e21075c3eaebd04ddc1c8a278895e96faba67
 
     public function getDebugInfo()
     {
-        return array (  174 => 53,  169 => 48,  166 => 47,  161 => 43,  156 => 40,  148 => 35,  140 => 34,  131 => 26,  127 => 25,  123 => 23,  120 => 22,  114 => 13,  110 => 11,  107 => 10,  101 => 6,  96 => 54,  94 => 53,  89 => 50,  87 => 47,  82 => 44,  80 => 43,  76 => 41,  74 => 40,  66 => 35,  62 => 34,  57 => 31,  55 => 22,  44 => 15,  42 => 10,  35 => 6,  28 => 1,);
+        return array (  177 => 53,  172 => 48,  169 => 47,  164 => 43,  159 => 40,  151 => 35,  143 => 34,  135 => 27,  131 => 26,  127 => 25,  123 => 23,  120 => 22,  114 => 13,  110 => 11,  107 => 10,  101 => 6,  96 => 54,  94 => 53,  89 => 50,  87 => 47,  82 => 44,  80 => 43,  76 => 41,  74 => 40,  66 => 35,  62 => 34,  57 => 31,  55 => 22,  44 => 15,  42 => 10,  35 => 6,  28 => 1,);
     }
 }

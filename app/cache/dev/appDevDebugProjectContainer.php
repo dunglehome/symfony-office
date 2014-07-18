@@ -703,20 +703,23 @@ class appDevDebugProjectContainer extends Container
         $c = new \Doctrine\Common\Cache\ArrayCache();
         $c->setNamespace('sf2orm_default_c022fd2c34017bd275adce5f989f5d0f51627b187cdbde5c2f7d34521a1fd8ac');
 
-        $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array());
-        $d->setMetadataCacheImpl($a);
-        $d->setQueryCacheImpl($b);
-        $d->setResultCacheImpl($c);
-        $d->setMetadataDriverImpl(new \Doctrine\ORM\Mapping\Driver\DriverChain());
-        $d->setProxyDir('C:/xampp/htdocs/symfony/app/cache/dev/doctrine/orm/Proxies');
-        $d->setProxyNamespace('Proxies');
-        $d->setAutoGenerateProxyClasses(true);
-        $d->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $d->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $d->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+        $d = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $d->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => 'C:\\xampp\\htdocs\\symfony\\src\\Blogger\\BlogBundle\\Entity')), 'Blogger\\BlogBundle\\Entity');
 
-        $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.default_connection'), $d);
+        $e = new \Doctrine\ORM\Configuration();
+        $e->setEntityNamespaces(array('BloggerBlogBundle' => 'Blogger\\BlogBundle\\Entity'));
+        $e->setMetadataCacheImpl($a);
+        $e->setQueryCacheImpl($b);
+        $e->setResultCacheImpl($c);
+        $e->setMetadataDriverImpl($d);
+        $e->setProxyDir('C:/xampp/htdocs/symfony/app/cache/dev/doctrine/orm/Proxies');
+        $e->setProxyNamespace('Proxies');
+        $e->setAutoGenerateProxyClasses(true);
+        $e->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $e->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $e->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+
+        $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.default_connection'), $e);
 
         $this->get('doctrine.orm.default_manager_configurator')->configure($instance);
 
@@ -2332,15 +2335,15 @@ class appDevDebugProjectContainer extends Container
     protected function getSwiftmailer_Mailer_Default_Transport_RealService()
     {
         $a = new \Swift_Transport_Esmtp_AuthHandler(array(0 => $this->get('8dce44a2b350584411884e2dc60b3f397ae65e9b9b01840be61bf66a217bd377_1'), 1 => $this->get('8dce44a2b350584411884e2dc60b3f397ae65e9b9b01840be61bf66a217bd377_2'), 2 => $this->get('8dce44a2b350584411884e2dc60b3f397ae65e9b9b01840be61bf66a217bd377_3')));
-        $a->setUsername(NULL);
-        $a->setPassword(NULL);
-        $a->setAuthMode(NULL);
+        $a->setUsername('dungleaddress@gmail.com');
+        $a->setPassword('nhaemtoi');
+        $a->setAuthMode('login');
 
         $this->services['swiftmailer.mailer.default.transport.real'] = $instance = new \Swift_Transport_EsmtpTransport(new \Swift_Transport_StreamBuffer(new \Swift_StreamFilters_StringReplacementFilterFactory()), array(0 => $a), $this->get('swiftmailer.mailer.default.transport.eventdispatcher'));
 
-        $instance->setHost('127.0.0.1');
-        $instance->setPort(25);
-        $instance->setEncryption(NULL);
+        $instance->setHost('smtp.gmail.com');
+        $instance->setPort(465);
+        $instance->setEncryption('ssl');
         $instance->setTimeout(30);
         $instance->setSourceIp(NULL);
 
@@ -3576,16 +3579,17 @@ class appDevDebugProjectContainer extends Container
             'database_name' => 'symfony',
             'database_user' => 'root',
             'database_password' => NULL,
-            'mailer_transport' => 'smtp',
-            'mailer_host' => '127.0.0.1',
-            'mailer_user' => NULL,
-            'mailer_password' => NULL,
+            'mailer_transport' => 'gmail',
+            'mailer_host' => 'smtp.gmail.com',
+            'mailer_user' => 'dungleaddress@gmail.com',
+            'mailer_password' => 'nhaemtoi',
             'locale' => 'en',
             'secret' => '2862c0f19e5a5ee7f91a1a40aa02109f5',
             'debug_toolbar' => true,
             'debug_redirects' => false,
             'use_assetic_controller' => true,
             'database_path' => NULL,
+            'blogger_blog.emails.contact_email' => 'dunnleaddress@gmail.com',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
             'response_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener',
@@ -3949,12 +3953,12 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.data_collector.class' => 'Symfony\\Bundle\\SwiftmailerBundle\\DataCollector\\MessageDataCollector',
             'swiftmailer.mailer.default.transport.name' => 'smtp',
             'swiftmailer.mailer.default.delivery.enabled' => true,
-            'swiftmailer.mailer.default.transport.smtp.encryption' => NULL,
-            'swiftmailer.mailer.default.transport.smtp.port' => 25,
-            'swiftmailer.mailer.default.transport.smtp.host' => '127.0.0.1',
-            'swiftmailer.mailer.default.transport.smtp.username' => NULL,
-            'swiftmailer.mailer.default.transport.smtp.password' => NULL,
-            'swiftmailer.mailer.default.transport.smtp.auth_mode' => NULL,
+            'swiftmailer.mailer.default.transport.smtp.encryption' => 'ssl',
+            'swiftmailer.mailer.default.transport.smtp.port' => 465,
+            'swiftmailer.mailer.default.transport.smtp.host' => 'smtp.gmail.com',
+            'swiftmailer.mailer.default.transport.smtp.username' => 'dungleaddress@gmail.com',
+            'swiftmailer.mailer.default.transport.smtp.password' => 'nhaemtoi',
+            'swiftmailer.mailer.default.transport.smtp.auth_mode' => 'login',
             'swiftmailer.mailer.default.transport.smtp.timeout' => 30,
             'swiftmailer.mailer.default.transport.smtp.source_ip' => NULL,
             'swiftmailer.spool.default.memory.path' => 'C:/xampp/htdocs/symfony/app/cache/dev/swiftmailer/spool/default',
