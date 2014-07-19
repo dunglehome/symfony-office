@@ -1,4 +1,5 @@
 # src/Blogger/BlogBundle/Resources/config/routing.yml
+
 BloggerBlogBundle_homepage:
     pattern:  /
     defaults: { _controller: BloggerBlogBundle:Page:index }
@@ -8,5 +9,11 @@ BloggerBlogBundle_homepage:
 BloggerBlogBundle_about:
     pattern:  /about
     defaults: { _controller: BloggerBlogBundle:Page:about }
+    requirements:
+        _method:  GET
+
+BloggerBlogBundle_contact:
+    pattern:  /contact
+    defaults: { _controller: BloggerBlogBundle:Page:contact }
     requirements:
         _method:  GET
