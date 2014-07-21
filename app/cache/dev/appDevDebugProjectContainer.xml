@@ -32,8 +32,8 @@
     <parameter key="database_password">null</parameter>
     <parameter key="mailer_transport">gmail</parameter>
     <parameter key="mailer_host">smtp.gmail.com</parameter>
-    <parameter key="mailer_user">dungleaddress@gmail.com</parameter>
-    <parameter key="mailer_password">nhaemtoi</parameter>
+    <parameter key="mailer_user">dungaddress@gmail.com</parameter>
+    <parameter key="mailer_password">pass</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="secret">2862c0f19e5a5ee7f91a1a40aa02109f5</parameter>
     <parameter key="debug_toolbar">true</parameter>
@@ -399,8 +399,8 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">ssl</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.port">465</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">dungleaddress@gmail.com</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">nhaemtoi</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">dungaddress@gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">pass</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">login</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
@@ -2388,7 +2388,7 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>C:\xampp\htdocs\symfony\src\Blogger\BlogBundle\Entity</argument>
+                        <argument>/Applications/XAMPP/xamppfiles/htdocs/symfony/src/Blogger/BlogBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2845,10 +2845,10 @@
               <argument type="service" id="0e89f9d0a5d3a161ab3eaa138e3daf2ca52e7341fafe94d3af452f150eee4988_3"/>
             </argument>
             <call method="setUsername">
-              <argument>dungleaddress@gmail.com</argument>
+              <argument>dungaddress@gmail.com</argument>
             </call>
             <call method="setPassword">
-              <argument>nhaemtoi</argument>
+              <argument>pass</argument>
             </call>
             <call method="setAuthMode">
               <argument>login</argument>
