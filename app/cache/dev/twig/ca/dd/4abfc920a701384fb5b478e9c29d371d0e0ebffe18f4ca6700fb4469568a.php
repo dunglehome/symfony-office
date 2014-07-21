@@ -41,16 +41,21 @@ class __TwigTemplate_cadd4abfc920a701384fb5b478e9c29d371d0e0ebffe18f4ca6700fb446
 
     ";
         // line 11
-        if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "hasFlash", array(0 => "blogger-notice"), "method")) {
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "flashbag"), "get", array(0 => "blogger-notice"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
             // line 12
             echo "        <div class=\"blogger-notice\">
             ";
             // line 13
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "flash", array(0 => "blogger-notice"), "method"), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["flashMessage"]) ? $context["flashMessage"] : $this->getContext($context, "flashMessage")), "html", null, true);
             echo "
         </div>
     ";
         }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 16
         echo "
     <p>Want to contact symblog?</p>
@@ -105,6 +110,6 @@ class __TwigTemplate_cadd4abfc920a701384fb5b478e9c29d371d0e0ebffe18f4ca6700fb446
 
     public function getDebugInfo()
     {
-        return array (  88 => 27,  83 => 25,  79 => 24,  75 => 23,  71 => 22,  66 => 20,  60 => 19,  55 => 16,  49 => 13,  46 => 12,  44 => 11,  38 => 7,  35 => 6,  29 => 4,);
+        return array (  93 => 27,  88 => 25,  84 => 24,  80 => 23,  76 => 22,  71 => 20,  65 => 19,  60 => 16,  51 => 13,  48 => 12,  44 => 11,  38 => 7,  35 => 6,  29 => 4,);
     }
 }
