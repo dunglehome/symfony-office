@@ -57,7 +57,7 @@ class MonologExtension extends Extension
             foreach ($config['handlers'] as $name => $handler) {
                 $handlers[$handler['priority']][] = array(
                     'id'       => $this->buildHandler($container, $name, $handler),
-                    'channels' => isset($handler['channels']) ? $handler['channels'] : null
+                    'channels' => empty($handler['channels']) ? null : $handler['channels']
                 );
             }
 
@@ -148,7 +148,8 @@ class MonologExtension extends Extension
                 $handler['bubble'],
                 isset($handler['verbosity_levels']) ? $handler['verbosity_levels'] : array()
             ));
-            $definition->addTag('kernel.event_subscriber');
+            $definition->addTag('kernel.event_listener', array('event' => 'console.command', 'method' => 'onCommand', 'priority' => 255));
+            $definition->addTag('kernel.event_listener', array('event' => 'console.terminate', 'method' => 'onTerminate', 'priority' => -255));
             break;
 
         case 'firephp':
