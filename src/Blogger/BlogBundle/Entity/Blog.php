@@ -45,8 +45,6 @@ class Blog
      */
     protected $tags;
 
-    protected $comments;
-
     /**
      * @ORM\Column(type="datetime")
      */
@@ -56,6 +54,11 @@ class Blog
      * @ORM\Column(type="datetime")
      */
     protected $updated;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
+    protected $comments;
 
     public function __construct()
     {
@@ -288,5 +291,38 @@ class Blog
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Blogger\BlogBundle\Entity\Comment $comments
+     * @return Blog
+     */
+    public function addComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Blogger\BlogBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
