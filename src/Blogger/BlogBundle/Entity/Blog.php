@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\Repository\BlogRepository")
  * @ORM\Table(name="blog")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
  */
 class Blog
 {
