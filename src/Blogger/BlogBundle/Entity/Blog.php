@@ -56,6 +56,11 @@ class Blog
     protected $updated;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $slug;
+
+    /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
      */
     protected $comments;

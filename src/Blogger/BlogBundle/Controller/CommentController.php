@@ -18,11 +18,11 @@ class CommentController extends Controller
 
         $comment = new Comment();
         $comment->setBlog($blog);
-        $form   = $this->createForm(new CommentType(), $comment);
+        $form = $this->createForm(new CommentType(), $comment);
 
         return $this->render('BloggerBlogBundle:Comment:form.html.twig', array(
             'comment' => $comment,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -30,36 +30,36 @@ class CommentController extends Controller
     {
         $blog = $this->getBlog($blog_id);
 
-        $comment  = new Comment();
+        $comment = new Comment();
         $comment->setBlog($blog);
         $request = $this->getRequest();
-        $form    = $this->createForm(new CommentType(), $comment);
-        /*$form->bindRequest($request);*/
+        $form = $this->createForm(new CommentType(), $comment);
         $form->submit($request);
 
         if ($form->isValid()) {
-            // TODO: Persist the comment entity
+            // TODO: Persist the comment entity - done?
             $em = $this->getDoctrine()
-                ->getEntityManager();
+                ->getManager();
             $em->persist($comment);
             $em->flush();
 
             return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(
-                    'id' => $comment->getBlog()->getId())) .
+                    'id'    => $comment->getBlog()->getId(),
+                    'slug'  => $comment->getBlog()->getSlug())) .
                 '#comment-' . $comment->getId()
             );
         }
 
         return $this->render('BloggerBlogBundle:Comment:create.html.twig', array(
             'comment' => $comment,
-            'form'    => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
     protected function getBlog($blog_id)
     {
         $em = $this->getDoctrine()
-            ->getEntityManager();
+            ->getManager();
 
         $blog = $em->getRepository('BloggerBlogBundle:Blog')->find($blog_id);
 

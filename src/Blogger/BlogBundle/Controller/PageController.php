@@ -15,15 +15,8 @@ class PageController extends Controller
         $em = $this->getDoctrine()
             ->getManager();
 
-        /*$em = $this->getDoctrine()
-            ->getEntityManager();*/
-
-        $blogs = $em->createQueryBuilder()
-            ->select('b')
-            ->from('BloggerBlogBundle:Blog',  'b')
-            ->addOrderBy('b.created', 'DESC')
-            ->getQuery()
-            ->getResult();
+        $blogs = $em->getRepository('BloggerBlogBundle:Blog')
+            ->getLatestBlogs();
 
         return $this->render('BloggerBlogBundle:Page:index.html.twig', array(
             'blogs' => $blogs
@@ -42,7 +35,6 @@ class PageController extends Controller
         $request = $this->getRequest();
 
         if ($request->getMethod() == 'POST') {
-            // $form->bindRequest($request);
             $form->bind($this->getRequest());
 
             if ($form->isValid()) {
@@ -52,24 +44,38 @@ class PageController extends Controller
                     ->setFrom('dungleaddress@gmail.com')
                     ->setTo('dunnleaddress@gmail.com')
                     ->setBody($this->renderView('BloggerBlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
-                $this->get('mailer')->send($message);
 
-                /*$this->get('session')->setFlash('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');*/
+                $this->get('mailer')->send($message);
                 $this->get('session')->getFlashBag()->add('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
 
-                /*
-                 * http://stackoverflow.com/questions/9599191/set-flash-in-symfony-2-1
-                 * $this->get('session')->getFlashBag()->set('type', 'message');
-                 */
-
-                // Redirect - This is important to prevent users re-posting
-                // the form if they refresh the page
                 return $this->redirect($this->generateUrl('BloggerBlogBundle_contact'));
             }
         }
 
         return $this->render('BloggerBlogBundle:Page:contact.html.twig', array(
             'form' => $form->createView()
+        ));
+    }
+
+    public function sidebarAction()
+    {
+        $em = $this->getDoctrine()
+            ->getManager();
+
+        $tags = $em->getRepository('BloggerBlogBundle:Blog')
+            ->getTags();
+
+        $tagWeights = $em->getRepository('BloggerBlogBundle:Blog')
+            ->getTagWeights($tags);
+
+        $commentLimit   = $this->container
+            ->getParameter('blogger_blog.comments.latest_comment_limit');
+        $latestComments = $em->getRepository('BloggerBlogBundle:Comment')
+            ->getLatestComments($commentLimit);
+
+        return $this->render('BloggerBlogBundle:Page:sidebar.html.twig', array(
+            'latestComments'    => $latestComments,
+            'tags'              => $tagWeights
         ));
     }
 }
