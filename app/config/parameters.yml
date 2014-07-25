@@ -9,7 +9,7 @@ parameters:
     mailer_transport: gmail
     mailer_host: smtp.gmail.com
     mailer_user: dungaddress@gmail.com
-    mailer_password: pass
+    mailer_password: passwordhere
     locale: en
     secret: 2862c0f19e5a5ee7f91a1a40aa02109f5
     debug_toolbar: true
