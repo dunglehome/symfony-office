@@ -1,7 +1,0 @@
-app/config/parameters.yml
-app/cache/*
-app/logs/*
-app/cache/*.*
-app/logs/*.*
-app/cache/dev/*
-app/phpunit.xml
