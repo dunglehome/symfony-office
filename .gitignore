@@ -5,6 +5,9 @@ app/cache/
 app/logs/
 app/phpunit.xml
 
+# recommended here http://www.jetbrains.com/idea/webhelp/project.html
+.idea/workspace.xml
+
 # https://github.com/github/gitignore/blob/master/Symfony2.gitignore #
 ######################################################################
 # Cache and logs
