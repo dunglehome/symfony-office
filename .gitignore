@@ -1,0 +1,33 @@
+# Dung Le #
+###########
+app/config/parameters.yml
+app/cache/
+app/logs/
+app/phpunit.xml
+
+# https://github.com/github/gitignore/blob/master/Symfony2.gitignore #
+######################################################################
+# Cache and logs
+/app/cache/*
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+
+# Parameters
+/app/config/parameters.yml
+/app/config/parameters.ini
+
+# Managed by Composer
+/app/bootstrap.php.cache
+/bin/
+/vendor/
+
+# Assets and user uploads
+/web/bundles/
+/web/uploads/
+
+# PHPUnit
+/app/phpunit.xml
+
+# Composer PHAR
+/composer.phar
