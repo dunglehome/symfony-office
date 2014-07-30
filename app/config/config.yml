@@ -97,3 +97,9 @@ hwi_oauth:
             type:                twitter
             client_id:           dePmnIPQ9YjQP9Snu4pxvYcdn
             client_secret:       f17HWick5i3YQ9ULWpTnlRIdmHkkzoGjar5weHei0mgrZGxJxu
+
+        google:
+            type:                google
+            client_id:           618156232071-7lub152o21rtv27k8g8837t04m4616mc.apps.googleusercontent.com
+            client_secret:       tR1aWQ8_bl-rhXZGmR9ZVApW
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
